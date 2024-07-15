@@ -1,0 +1,66 @@
+body {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    background-image:url('imgs/backgroundimg.jpg');
+}
+
+.gridcontainer {
+    display: grid;
+    grid-template-columns: repeat(4, 120px);
+    grid-template-rows: repeat(2, 180px);
+    gap: 16px;
+    margin-top: 2rem;
+    padding:20px;
+    }
+
+.memory-card {
+    width: 100%;
+    height: 100%;
+    perspective: 1000px;
+    cursor: pointer;
+}
+
+.card-inner {
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+}
+
+.memory-card.flipped .card-inner {
+    transform: rotateY(-180deg);
+}
+
+.card-front,
+.card-back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+}
+
+.card-front {
+    background-image: url('imgs/cardimg.jpg');
+    background-size: cover;
+    background-position: center;
+    border: 1px solid black;
+}
+
+.card-back {
+    transform: rotateY(180deg);
+}
+
+.card-back img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.status{
+    text-align: center;
+}
+.memory-card.matched {
+    pointer-events: none; /* Prevent matched cards from being clickable */
+}
